@@ -10,7 +10,7 @@ use EnliteTestTest\Fixtures\RealDatabaseFixture;
 
 
 
-class RealDatabaseTest extends \PHPUnit_Framework_TestCase
+class DatabaseFixtureTraitTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

@@ -11,7 +11,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Zend\ServiceManager\Exception\RuntimeException;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-trait RealDatabase
+trait DatabaseFixtureTrait
 {
 
     /**

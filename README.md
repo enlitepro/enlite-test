@@ -10,39 +10,43 @@ Modify `TestConfig.php.dist` and change glob path options to:
 
 Create file `glob.php` near id `test` directory with options like this
 
-    <?php
+```php
+<?php
 
-    return array(
-        'doctrine' => array(
-            'connection' => array(
-                'orm_default' => array(
-                    'driverClass' => 'Doctrine\DBAL\Driver\PDOSqlite\Driver',
-                    'params' => array(
-                        'memory' => true
-                    ),
-                )
-            ),
+return array(
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOSqlite\Driver',
+                'params' => array(
+                    'memory' => true
+                ),
+            )
         ),
-    );
+    ),
+);
+```
 
 Now in your test you can use real database
 
-    <?php
+```php
+<?php
 
-    class SomeTest extends \PHPUnit_Framework_TestCase
+class SomeTest extends \PHPUnit_Framework_TestCase
+{
+    use \EnliteTest\DatabaseFixtureTrait;
+
+    public function testSave()
     {
-        use \EnliteTest\RealDatabase;
+        $entity = new Some();
+        $entity->setTitle('hello');
 
-        public function testSave()
-        {
-            $entity = new Some();
-            $entity->setTitle('hello');
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        $em->flush();
 
-            $em = $this->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
-
-            $this->assertSame($entity, $em->getRepository('Some')->find($entity->getId()));
-        }
-
+        $this->assertSame($entity, $em->getRepository('Some')->find($entity->getId()));
     }
+
+}
+```

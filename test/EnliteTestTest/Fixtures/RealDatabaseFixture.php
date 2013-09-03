@@ -6,11 +6,11 @@
 namespace EnliteTestTest\Fixtures;
 
 
-use EnliteTest\RealDatabase;
+use EnliteTest\DatabaseFixtureTrait;
 
 class RealDatabaseFixture
 {
-    use RealDatabase;
+    use DatabaseFixtureTrait;
 
 
 
