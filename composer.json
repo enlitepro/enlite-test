@@ -1,0 +1,23 @@
+{
+    "name": "enlitepro/enlite-test",
+    "description": "Helpers for testing",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgeny Shpilevsky",
+            "email": "evgeny@shpilevsky.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "3.7.*",
+        "zendframework/zend-servicemanager": "2.2.*",
+        "doctrine/orm": "*",
+        "mockery/mockery": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "EnliteTest": "src/"
+        }
+    }
+}
